@@ -1,0 +1,239 @@
+<div class="page-header">
+  <!-- <div class="row">
+    <div class="col-md-4">
+
+      <h2>
+        Tasks
+        <a href="/tasks/new" class="btn btn-sm btn-success"><i class="fa fa-plus"></i></a>
+      </h2>
+    </div>
+    <div class="col-md-4">
+
+      <h2>
+        Categories
+        <a href="/categories" class="btn btn-sm btn-success"><i class="fa fa-plus"></i></a>
+      </h2>
+    </div>
+  </div>
+</div>
+-->
+
+
+<h1> Plan for (feed in date range) </h1>
+
+<hr>
+
+<!-- Toggle to next set of days / week -->
+<ul class="pager">
+  <li class="previous disabled"><a href="#">← Older</a></li>
+  <li class="next"><a href="#">Newer →</a></li>
+</ul>
+
+<hr>
+
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-offset-1 col-md-1"></div>
+
+    <div class="col-md-2">
+      <dt><%= Date.today %></dt>
+
+    </div>
+
+    <div class="col-md-2">
+      <dt><%= Date.today+1 %></dt>
+    </div>
+
+    <div class="col-md-2">
+      <dt><%= Date.today+2 %></dt>
+    </div>
+
+    <div class="col-md-2">
+      <dt><%= Date.today+3 %></dt>
+    </div>
+
+    <div class="col-md-2">
+      <dt><%= Date.today+4 %></dt>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <!-- Task section notes -->
+  <!-- for each column, day, need to pull in task for whom date is between start date and due date -->
+
+  <div class="row">
+   <div class="col-md-offset-1 col-md-1"></div>
+
+   <div class="col-md-2">
+    <dl>
+      <% @tasks.where(:start_date => Date.today).each do |task| %>
+
+      <dt><i><%= task.description %></i></dt>
+
+      <dt>Start date: <%= task.start_date %></dt>
+
+      <dt>Due on: <%= task.due_on %></dt>
+
+      <% end %>
+
+    </dl>
+  </div>
+
+  <div class="col-md-2">
+   <dl>
+   <% @tasks.where(:start_date => Date.today+1).each do |task| %>
+
+      <dt><i><%= task.description %></i></dt>
+
+    <dt>Start date: <%= task.start_date %></dt>
+
+    <dt>Due on: <%= task.due_on %></dt>
+
+    <% end %>
+
+  </dl>
+</div>
+
+<div class="col-md-2">
+  <dt>Task</dt>
+</div>
+
+<div class="col-md-2">
+  <dt>Task</dt>
+</div>
+
+<div class="col-md-2">
+  <dt>Task</dt>
+</div>
+
+</div>
+
+<hr>
+
+<!-- Weather section notes -->
+<!-- for each column, show weather for that column's date -->
+
+<div class="row">
+  <div class="col-md-offset-1 col-md-1"></div>
+
+  <div class="col-md-2">
+    <dt>Weather forecast</dt>
+
+  </div>
+
+  <div class="col-md-2">
+    <dt>Weather forecast</dt>
+  </div>
+
+  <div class="col-md-2">
+    <dt>Weather forecast</dt>
+  </div>
+
+  <div class="col-md-2">
+    <dt>Weather forecast</dt>
+  </div>
+
+  <div class="col-md-2">
+    <dt>Weather forecast</dt>
+  </div>
+
+</div>
+
+</div>
+
+<!-- Responsive, Isotope-based layout example -->
+
+<!-- <div class="row">
+  <div class="col-xs-12">
+    <input type="text" id="quicksearch" placeholder="Search Tasks (start typing)" class="form-control">
+  </div>
+</div> -->
+
+<hr>
+
+<div class="row isotope-container">
+  <% @tasks.each do |task| %>
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= task.description %></h3>
+      </div>
+      <div class="panel-body">
+        <dl>
+         <dt>Start date</dt>
+         <dd><%= task.start_date %></dd>
+
+         <dt>Due on</dt>
+         <dd><%= task.due_on %></dd>
+
+       </dl>
+       <div class="btn-group btn-group-justified">
+        <a href="/tasks/<%= task.id %>" class="btn btn-primary">
+          <i class="fa fa-search-plus"></i>
+        </a>
+
+        <a href="/tasks/<%= task.id %>/edit" class="btn btn-warning">
+          <i class="fa fa-edit"></i>
+        </a>
+
+        <a href="/delete_task/<%= task.id %>" class="btn btn-danger" rel="nofollow">
+          <i class="fa fa-trash-o"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+</div>
+
+<!-- You can ignore the following. It's a quick and dirty example of how to get a Pinterest-style layout with quick search. -->
+<!-- JavaScript for Isotope layout and quicksearch -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.pkgd.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.0.0/isotope.pkgd.min.js"></script>
+<script>
+  $(function() {
+    // quick search regex
+    var qsRegex;
+
+    // init Isotope
+    var $container = $('.isotope-container');
+
+    $container.imagesLoaded(function() {
+      $container.isotope({
+        itemSelector: '.isotope-item',
+        layoutMode: 'masonry',
+        filter: function() {
+          return qsRegex ? $(this).text().match( qsRegex ) : true;
+        }
+      })
+    });
+
+    // use value of search field to filter
+    var $quicksearch = $('#quicksearch').keyup( debounce( function() {
+      qsRegex = new RegExp( $quicksearch.val(), 'gi' );
+      $container.isotope();
+    }, 200 ) );
+
+  });
+
+  // debounce so filtering doesn't happen every millisecond
+  function debounce( fn, threshold ) {
+    var timeout;
+    return function debounced() {
+      if ( timeout ) {
+        clearTimeout( timeout );
+      }
+      function delayed() {
+        fn();
+        timeout = null;
+      }
+      timeout = setTimeout( delayed, threshold || 100 );
+    }
+  }
+</script>
+
+<!-- End responsive, Isotope-based layout example -->

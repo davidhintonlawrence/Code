@@ -1,0 +1,58 @@
+<!-- Responsive panel example-->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Task #<%= @task.id %></h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <dl class="dl-horizontal">
+              <dt>Status</dt>
+              <dd><%= @task.status %></dd>
+
+              <dt>Create date</dt>
+              <dd><%= @task.create_date %></dd>
+
+              <dt>Start date</dt>
+              <dd><%= @task.start_date %></dd>
+
+              <dt>Complete</dt>
+              <dd><%= @task.complete %></dd>
+
+              <dt>Category</dt>
+              <dd><%= @task.category_id %></dd>
+
+              <dt>Due on</dt>
+              <dd><%= @task.due_on %></dd>
+
+              <dt>User</dt>
+              <dd><%= @task.user_id %></dd>
+
+              <dt>Description</dt>
+              <dd><%= @task.description %></dd>
+
+            </dl>
+            <div class="btn-group btn-group-justified">
+              <a href="/tasks" class="btn btn-primary">
+                <i class="fa fa-chevron-left"></i>
+              </a>
+
+              <a href="/tasks/<%= @task.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+
+              <a href="/delete_task/<%= @task.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End responsive panel example -->
