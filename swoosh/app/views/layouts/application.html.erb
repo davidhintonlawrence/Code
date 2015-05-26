@@ -39,11 +39,22 @@
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
+      <!-- Main nav bar -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/tasks/new" class="btn btn-sm btn-default"><i class="fa fa-plus"></i> Add task </a> </li>
-          <li><a href="/categories/new" class="btn btn-sm btn-default"><i class="fa fa-plus"></i> Add category </a> </li>
+          <!-- <li><a href="/tasks/new" class="btn btn-sm btn-default"><i class="fa fa-plus"></i> Add task </a> </li>
+          <li><a href="/categories/new" class="btn btn-sm btn-default"><i class="fa fa-plus"></i> Add category </a> </li> -->
 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Actions <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/tasks/new">Add task</a></li>
+              <li><a href="/categories/new">Add category</a></li>
+              <li class="divider"></li>
+              <li><a href="/tasksview">View tasks</a></li>
+              <li><a href="/categories">View categories</a></li>
+            </ul>
+          </li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">

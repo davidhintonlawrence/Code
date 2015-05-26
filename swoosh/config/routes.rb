@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get "/tasks", :controller => "tasks", :action => "index"
   get "/tasks/:id", :controller => "tasks", :action => "show"
 # Add view below to see all tasks in one window with table, sorted by date and completion status
-  # get "/tasks/view", :controller => "tasks", :action => "all"
+  get "/tasksview", :controller => "tasks", :action => "all"
 
 
   # UPDATE

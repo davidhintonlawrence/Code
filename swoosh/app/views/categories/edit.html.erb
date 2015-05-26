@@ -11,6 +11,10 @@
 
 <!-- Responsive panel example -->
 
+<!-- Add space at top -->
+<div class="row">
+  <hr>
+
 <div class="row">
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
     <div class="panel panel-default">
@@ -23,7 +27,7 @@
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
           <!-- Label and input for task_id -->
-          <div class="form-group">
+    <!--       <div class="form-group">
             <label for="task_id" class="col-sm-2 control-label">
               Task
             </label>
@@ -31,7 +35,7 @@
               <input type="text" id="task_id" name="task_id" placeholder="Task" class="form-control" value="<%= @category.task_id %>">
             </div>
           </div>
-
+ -->
           <!-- Label and input for name -->
           <div class="form-group">
             <label for="name" class="col-sm-2 control-label">

@@ -5,6 +5,10 @@ class TasksController < ApplicationController
 
   end
 
+  def all
+    @tasks = Task.all
+  end
+
   def show
     @task = Task.find(params[:id])
   end
@@ -63,8 +67,8 @@ class TasksController < ApplicationController
   end
 
 # Show today's date
-  def current
-    ::Time.zone ? ::Time.zone.today : ::Date.today
-  end
+def current
+  ::Time.zone ? ::Time.zone.today : ::Date.today
+end
 
 end

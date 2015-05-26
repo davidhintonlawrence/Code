@@ -1,7 +1,7 @@
 <div class="page-header">
   <h1>
-    Categories
-    <a href="/categories/new" class="btn btn-med btn-success"><i class="fa fa-plus"></i>  Add one</a>
+    Tasks
+    <a href="/tasks/new" class="btn btn-med btn-success"><i class="fa fa-plus"></i>  Add one</a>
   </h1>
 </div>
 
@@ -9,45 +9,54 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <input type="text" id="quicksearch" placeholder="Search Categories (start typing)" class="form-control">
+    <input type="text" id="quicksearch" placeholder="Search Tasks (start typing)" class="form-control">
   </div>
 </div>
 
 <hr>
 
 <div class="row isotope-container">
-<% @categories.each do |category| %>
+  <% @tasks.each do |task| %>
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Category #<%= category.id %></h3>
+        <h3 class="panel-title"><b><%= task.description %></b>, #<%= task.id %></h3>
       </div>
       <div class="panel-body">
         <dl>
-          <dt>Task</dt>
-          <dd><%= category.task_id %></dd>
+            <dt>Category</dt>
+          <dd><%= task.category %></dd>
 
-          <dt>Name</dt>
-          <dd><%= category.name %></dd>
+          <dt>Due on</dt>
+          <dd><%= task.due_on %></dd>
+
+          <dt>Status</dt>
+          <dd><%= task.status %></dd>
+
+             <dt>Created at</dt>
+          <dd><%= task.created_at %></dd>
+
+                  <dt>Updated at</dt>
+          <dd><%= task.updated_at %></dd>
 
         </dl>
         <div class="btn-group btn-group-justified">
-          <a href="/categories/<%= category.id %>" class="btn btn-primary">
+          <a href="/tasks/<%= task.id %>" class="btn btn-primary">
             <i class="fa fa-search-plus"></i>
           </a>
 
-          <a href="/categories/<%= category.id %>/edit" class="btn btn-warning">
+          <a href="/tasks/<%= task.id %>/edit" class="btn btn-warning">
             <i class="fa fa-edit"></i>
           </a>
 
-          <a href="/delete_category/<%= category.id %>" class="btn btn-danger" rel="nofollow">
+          <a href="/delete_task/<%= task.id %>" class="btn btn-danger" rel="nofollow">
             <i class="fa fa-trash-o"></i>
           </a>
         </div>
       </div>
     </div>
   </div>
-<% end %>
+  <% end %>
 </div>
 
 <!-- You can ignore the following. It's a quick and dirty example of how to get a Pinterest-style layout with quick search. -->

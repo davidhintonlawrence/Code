@@ -1,15 +1,19 @@
 <!-- Validation failure messages -->
 
 <% if @task.errors.any? %>
-  <% @task.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @task.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 <!-- Responsive panel example -->
+
+<!-- Add space at top -->
+<div class="row">
+  <hr>
 
 <div class="row">
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
@@ -23,7 +27,7 @@
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
           <!-- Label and input for status -->
-          <div class="form-group">
+       <!--    <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
               <div class="checkbox">
                 <label for="status">
@@ -32,15 +36,25 @@
                 </label>
               </div>
             </div>
-          </div>
+          </div> -->
 
           <!-- Label and input for create_date -->
-          <div class="form-group">
+       <!--    <div class="form-group">
             <label for="create_date" class="col-sm-2 control-label">
               Create date
             </label>
             <div class="col-sm-10">
               <input type="text" id="create_date" name="create_date" placeholder="Create date" class="form-control" value="<%= @task.create_date %>">
+            </div>
+          </div> -->
+
+          <!-- Label and input for description -->
+          <div class="form-group">
+            <label for="description" class="col-sm-2 control-label">
+              Description
+            </label>
+            <div class="col-sm-10">
+              <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @task.description %></textarea>
             </div>
           </div>
 
@@ -51,6 +65,16 @@
             </label>
             <div class="col-sm-10">
               <input type="text" id="start_date" name="start_date" placeholder="Start date" class="form-control" value="<%= @task.start_date %>">
+            </div>
+          </div>
+
+          <!-- Label and input for due_on -->
+          <div class="form-group">
+            <label for="due_on" class="col-sm-2 control-label">
+              Due on
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="due_on" name="due_on" placeholder="Due on" class="form-control" value="<%= @task.due_on %>">
             </div>
           </div>
 
@@ -72,53 +96,34 @@
               Category
             </label>
             <div class="col-sm-10">
-              <input type="text" id="category_id" name="category_id" placeholder="Category" class="form-control" value="<%= @task.category_id %>">
-            </div>
-          </div>
+             <!--  <input type="text" id="category_id" name="category_id" placeholder="Category" class="form-control" value="<%= @task.category %>"> -->
+             <%= select_tag(:category_id, options_from_collection_for_select(Category.all, :id, :name, @task.category_id), :class => "form-control") %>
+           </div>
+         </div>
 
-          <!-- Label and input for due_on -->
-          <div class="form-group">
-            <label for="due_on" class="col-sm-2 control-label">
-              Due on
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="due_on" name="due_on" placeholder="Due on" class="form-control" value="<%= @task.due_on %>">
-            </div>
+         <!-- Label and input for user_id -->
+         <!-- <div class="form-group">
+          <label for="user_id" class="col-sm-2 control-label">
+            User
+          </label>
+          <div class="col-sm-10">
+            <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @task.user_id %>">
           </div>
+        </div> -->
 
-          <!-- Label and input for user_id -->
-          <div class="form-group">
-            <label for="user_id" class="col-sm-2 control-label">
-              User
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @task.user_id %>">
-            </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-warning">
+              Update Task
+            </button>
+            or
+            <a href="/tasks/<%= @task.id %>">Cancel</a>
           </div>
-
-          <!-- Label and input for description -->
-          <div class="form-group">
-            <label for="description" class="col-sm-2 control-label">
-              Description
-            </label>
-            <div class="col-sm-10">
-              <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @task.description %></textarea>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <button class="btn btn-warning">
-                Update Task
-              </button>
-              or
-              <a href="/tasks/<%= @task.id %>">Cancel</a>
-            </div>
-          </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   </div>
+</div>
 </div>
 
 
