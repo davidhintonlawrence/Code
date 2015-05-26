@@ -1,4 +1,4 @@
-<!-- Validation failure messages -->
+z<!-- Validation failure messages -->
 
 <% if @task.errors.any? %>
 <% @task.errors.full_messages.each do |message| %>
@@ -13,77 +13,77 @@
 
 <!-- Add space at top -->
 <div class="row">
-<hr>
+  <hr>
 
-<!-- Add task code -->
+  <!-- Add task code -->
 
-<div class="row">
-  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Add Task</h3>
-      </div>
-      <div class="panel-body">
-        <form action="/create_task" method="post" class="form-horizontal">
-          <!-- Hidden input for authenticity token to protect from forgery -->
-          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Add Task</h3>
+        </div>
+        <div class="panel-body">
+          <form action="/create_task" method="post" class="form-horizontal">
+            <!-- Hidden input for authenticity token to protect from forgery -->
+            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-          <!-- Label and input for description -->
-          <div class="form-group">
-            <label for="description" class="col-sm-2 control-label">
-              Description
-            </label>
-            <div class="col-sm-10">
-              <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @task.description %></textarea>
-            </div>
-          </div>
-
-
-          <!-- Label and input for start_date -->
-          <div class="form-group">
-            <label for="start_date" class="col-sm-2 control-label">
-              Start date
-            </label>
-
-            <div class="col-sm-10">
-              <div class="input-group date datetimepicker">
-                <input type="text" id="start_date" name="start_date" placeholder="Start date" class="form-control" value="<%= @task.start_date %>">
-                <span class="input-group-addon">
-                  <i class="fa fa-calendar"></i>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Label and input for due_on -->
-          <div class="form-group">
-            <label for="due_on" class="col-sm-2 control-label">
-              Due on
-            </label>
-
-            <div class="col-sm-10">
-              <div class="input-group date datetimepicker">
-                <input type="text" id="due_on" name="due_on" placeholder="Due on" class="form-control" value="<%= @task.due_on %>">
-                <span class="input-group-addon">
-                  <i class="fa fa-calendar"></i>
-                </span>
+            <!-- Label and input for description -->
+            <div class="form-group">
+              <label for="description" class="col-sm-2 control-label">
+                Description
+              </label>
+              <div class="col-sm-10">
+                <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @task.description %></textarea>
               </div>
             </div>
 
-          </div>
 
-          <!-- Label and input for category_id -->
-          <div class="form-group">
-            <label for="category_id" class="col-sm-2 control-label">
-              Category
-            </label>
+            <!-- Label and input for start_date -->
+            <div class="form-group">
+              <label for="start_date" class="col-sm-2 control-label">
+                Start date
+              </label>
 
-            <div class="col-sm-10">
-            <!-- Dropdown attempt -->
-         <!--      <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                Category <span class="caret"></span> -->
+              <div class="col-sm-10">
+                <div class="input-group date datetimepicker">
+                  <input type="text" id="start_date" name="start_date" placeholder="Start date" class="form-control" value="<%= @task.start_date %>">
+                  <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
 
-                <input type="text" id="category_id" name="category_id" placeholder="Category" class="form-control" value="<%= @task.category_id %>">
+            <!-- Label and input for due_on -->
+            <div class="form-group">
+              <label for="due_on" class="col-sm-2 control-label">
+                Due on
+              </label>
+
+              <div class="col-sm-10">
+                <div class="input-group date datetimepicker">
+                  <input type="text" id="due_on" name="due_on" placeholder="Due on" class="form-control" value="<%= @task.due_on %>">
+                  <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Label and input for category_id -->
+            <div class="form-group">
+              <label for="category_id" class="col-sm-2 control-label">
+                Category
+              </label>
+
+              <div class="col-sm-10">
+                <!-- Dropdown attempt -->
+                <%= select_tag(:category_id, options_from_collection_for_select(Category.all, :id, :name, @task.category_id), :class => "form-control") %>
+
+                <!-- Old form -->
+                <!--      <input type="text" id="category_id" name="category_id" placeholder="Category" class="form-control" value="<%= @task.category_id %>"> -->
               </div>
             </div>
 
