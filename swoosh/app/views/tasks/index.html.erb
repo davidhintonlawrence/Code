@@ -18,59 +18,55 @@
 </div>
 -->
 
-  <div class="row">
-    <h1> Plan for (feed in date range) </h1>
-  </div>
+<div class="row">
+  <h1> Plan for (feed in 5-day date range) </h1>
+</div>
 
-  <!-- Label and input for range_start -->
-  <div class="row">
-    <div class="form-group">
-      <label for="range_start" class="col-sm-2 control-label">
-        View start date
-      </label>
-      <div class="col-sm-2">
-        <div class="input-group date datetimepicker">
-          <input type="text" id="range_start" name="range_start" placeholder="Start date" class="form-control" value="">
-          <span class="input-group-addon">
-            <i class="fa fa-calendar"></i>
-          </span>
-        </div>
+<!-- Label and input for range_start -->
+<div class="row">
+  <div class="form-group">
+    <label for="range_start" class="col-sm-2 control-label">
+      View start date
+    </label>
+    <div class="col-sm-2">
+      <div class="input-group date datetimepicker">
+        <input type="text" id="range_start" name="range_start" placeholder="Start date" class="form-control" value="">
+        <span class="input-group-addon">
+          <i class="fa fa-calendar"></i>
+        </span>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Label and input for range_end -->
-  <div class="row">
-    <div class="form-group">
-      <label for="range_end" class="col-sm-2 control-label">
-        View end date
-      </label>
-      <div class="col-sm-2">
-        <div class="input-group date datetimepicker">
-          <input type="text" id="range_end" name="range_end" placeholder="End date" class="form-control" value="">
-          <span class="input-group-addon">
-            <i class="fa fa-calendar"></i>
-          </span>
-        </div>
+<!-- Label and input for range_end -->
+<div class="row">
+  <div class="form-group">
+    <label for="range_end" class="col-sm-2 control-label">
+      View end date
+    </label>
+    <div class="col-sm-2">
+      <div class="input-group date datetimepicker">
+        <input type="text" id="range_end" name="range_end" placeholder="End date" class="form-control" value="">
+        <span class="input-group-addon">
+          <i class="fa fa-calendar"></i>
+        </span>
       </div>
     </div>
   </div>
-
-  <hr>
-
-  <!-- Toggle to next set of days / week -->
-  <ul class="pager">
-    <li class="previous disabled"><a href="#">← Older</a></li>
-    <li class="next"><a href="#">Newer →</a></li>
-  </ul>
+</div>
 
 <hr>
+
+
 
 
 <div class="container">
 
   <div class="row">
-    <div class="col-md-offset-1 col-md-1"></div>
+    <div class="col-md-2">
+      <dt><h4>Date</h4></dt>
+    </div>
 
     <div class="col-md-2">
       <dt><%= Date.today %></dt>
@@ -101,49 +97,51 @@
   <!-- for each column, day, need to pull in task for whom date is between start date and due date -->
 
   <div class="row">
-   <div class="col-md-offset-1 col-md-1"></div>
+    <div class="col-md-2">
+      <dt><h4>Tasks</h4></dt>
+    </div>
+
+    <div class="col-md-2">
+      <dl>
+        <% @tasks.where(:start_date => Date.today).each do |task| %>
+
+        <dt><i><%= task.description %></i></dt>
+
+        <dt>Start date: <%= task.start_date %></dt>
+
+        <dt>Due on: <%= task.due_on %></dt>
+
+        <% end %>
+
+      </dl>
+    </div>
+
+    <div class="col-md-2">
+     <dl>
+       <% @tasks.where(:start_date => Date.today+1).each do |task| %>
+
+       <dt><i><%= task.description %></i></dt>
+
+       <dt>Start date: <%= task.start_date %></dt>
+
+       <dt>Due on: <%= task.due_on %></dt>
+
+       <% end %>
+
+     </dl>
+   </div>
 
    <div class="col-md-2">
-    <dl>
-      <% @tasks.where(:start_date => Date.today).each do |task| %>
-
-      <dt><i><%= task.description %></i></dt>
-
-      <dt>Start date: <%= task.start_date %></dt>
-
-      <dt>Due on: <%= task.due_on %></dt>
-
-      <% end %>
-
-    </dl>
+    <dt>Task</dt>
   </div>
 
   <div class="col-md-2">
-   <dl>
-     <% @tasks.where(:start_date => Date.today+1).each do |task| %>
+    <dt>Task</dt>
+  </div>
 
-     <dt><i><%= task.description %></i></dt>
-
-     <dt>Start date: <%= task.start_date %></dt>
-
-     <dt>Due on: <%= task.due_on %></dt>
-
-     <% end %>
-
-   </dl>
- </div>
-
- <div class="col-md-2">
-  <dt>Task</dt>
-</div>
-
-<div class="col-md-2">
-  <dt>Task</dt>
-</div>
-
-<div class="col-md-2">
-  <dt>Task</dt>
-</div>
+  <div class="col-md-2">
+    <dt>Task</dt>
+  </div>
 
 </div>
 
@@ -153,7 +151,9 @@
 <!-- for each column, show weather for that column's date -->
 
 <div class="row">
-  <div class="col-md-offset-1 col-md-1"></div>
+  <div class="col-md-2">
+      <dt><h4>Weather</h4></dt>
+    </div>
 
   <div class="col-md-2">
     <dt>Weather forecast</dt>
@@ -179,6 +179,16 @@
 </div>
 
 </div>
+
+<hr>
+
+<!-- Toggle to next set of days / week -->
+<ul class="pager">
+  <li class="previous disabled"><a href="#">← Older</a></li>
+  <li class="next"><a href="#">Newer →</a></li>
+</ul>
+
+<hr>
 
 <!-- Responsive, Isotope-based layout example -->
 
@@ -189,6 +199,7 @@
 </div> -->
 
 <hr>
+<h2>Placeholder - tasks to be fed in table above</h2>
 
 <div class="row isotope-container">
   <% @tasks.each do |task| %>
