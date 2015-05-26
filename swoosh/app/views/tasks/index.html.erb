@@ -25,25 +25,23 @@
 <!-- Label and input for range_start -->
 <form action="/tasks" method="post" class="form-horizontal">
 
-  <div class="row">
-    <div class="form-group">
+<div class="form-group">
       <label for="range_start" class="col-sm-2 control-label">
         View start date
       </label>
       <div class="col-sm-2">
         <div class="input-group date datetimepicker">
-          <input type="text" id="range_start" name="range_start" placeholder="Start date" class="form-control" value="">
+          <input type="text" id="range_start" name="range_start" placeholder="Start date" class="form-control" value="range_start">
           <span class="input-group-addon">
             <i class="fa fa-calendar"></i>
           </span>
         </div>
       </div>
     </div>
-  </div>
 
   <div class="form-group">
-    <div class="col-sm-2">
-      <button a href="/tasks" class="btn btn-success">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button class="btn btn-success">
         Go!
       </button>
     </div>
