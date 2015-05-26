@@ -23,37 +23,33 @@
 </div>
 
 <!-- Label and input for range_start -->
-<div class="row">
-  <div class="form-group">
-    <label for="range_start" class="col-sm-2 control-label">
-      View start date
-    </label>
-    <div class="col-sm-2">
-      <div class="input-group date datetimepicker">
-        <input type="text" id="range_start" name="range_start" placeholder="Start date" class="form-control" value="">
-        <span class="input-group-addon">
-          <i class="fa fa-calendar"></i>
-        </span>
-      </div>
-    </div>
-  </div>
-</div>
+<form action="/tasks" method="post" class="form-horizontal">
 
-<!-- Label and input for range_end -->
-<div class="row">
-  <div class="form-group">
-    <label for="range_end" class="col-sm-2 control-label">
-      View end date
-    </label>
-    <div class="col-sm-2">
-      <div class="input-group date datetimepicker">
-        <input type="text" id="range_end" name="range_end" placeholder="End date" class="form-control" value="">
-        <span class="input-group-addon">
-          <i class="fa fa-calendar"></i>
-        </span>
+  <div class="row">
+    <div class="form-group">
+      <label for="range_start" class="col-sm-2 control-label">
+        View start date
+      </label>
+      <div class="col-sm-2">
+        <div class="input-group date datetimepicker">
+          <input type="text" id="range_start" name="range_start" placeholder="Start date" class="form-control" value="">
+          <span class="input-group-addon">
+            <i class="fa fa-calendar"></i>
+          </span>
+        </div>
       </div>
     </div>
   </div>
+
+  <div class="form-group">
+    <div class="col-sm-2">
+      <button a href="/tasks" class="btn btn-success">
+        Go!
+      </button>
+    </div>
+  </div>
+</form>
+
 </div>
 
 <hr>
@@ -103,7 +99,7 @@
 
     <div class="col-md-2">
       <dl>
-        <% @tasks.where(:start_date => Date.today).each do |task| %>
+        <% @tasks.where("start_date <= ?",Date.today).each do |task| %>
 
         <dt><i><%= task.description %></i></dt>
 
@@ -118,30 +114,63 @@
 
     <div class="col-md-2">
      <dl>
-       <% @tasks.where(:start_date => Date.today+1).each do |task| %>
+      <% @tasks.where(:start_date => Date.today+1).each do |task| %>
 
-       <dt><i><%= task.description %></i></dt>
+      <dt><i><%= task.description %></i></dt>
 
-       <dt>Start date: <%= task.start_date %></dt>
+      <dt>Start date: <%= task.start_date %></dt>
 
-       <dt>Due on: <%= task.due_on %></dt>
+      <dt>Due on: <%= task.due_on %></dt>
 
-       <% end %>
+      <% end %>
 
-     </dl>
-   </div>
-
-   <div class="col-md-2">
-    <dt>Task</dt>
+    </dl>
   </div>
 
   <div class="col-md-2">
-    <dt>Task</dt>
-  </div>
+   <dl>
+    <% @tasks.where(:start_date => Date.today+2).each do |task| %>
 
-  <div class="col-md-2">
-    <dt>Task</dt>
-  </div>
+    <dt><i><%= task.description %></i></dt>
+
+    <dt>Start date: <%= task.start_date %></dt>
+
+    <dt>Due on: <%= task.due_on %></dt>
+
+    <% end %>
+
+  </dl>
+</div>
+
+<div class="col-md-2">
+ <dl>
+  <% @tasks.where(:start_date => Date.today+3).each do |task| %>
+
+  <dt><i><%= task.description %></i></dt>
+
+  <dt>Start date: <%= task.start_date %></dt>
+
+  <dt>Due on: <%= task.due_on %></dt>
+
+  <% end %>
+
+</dl>
+</div>
+
+<div class="col-md-2">
+ <dl>
+  <% @tasks.where(:start_date => Date.today+4).each do |task| %>
+
+  <dt><i><%= task.description %></i></dt>
+
+  <dt>Start date: <%= task.start_date %></dt>
+
+  <dt>Due on: <%= task.due_on %></dt>
+
+  <% end %>
+
+</dl>
+</div>
 
 </div>
 
@@ -152,8 +181,8 @@
 
 <div class="row">
   <div class="col-md-2">
-      <dt><h4>Weather</h4></dt>
-    </div>
+    <dt><h4>Weather</h4></dt>
+  </div>
 
   <div class="col-md-2">
     <dt>Weather forecast</dt>

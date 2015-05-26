@@ -9,6 +9,14 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
 
+# for intelligent task filling
+  # def active_task
+  #   @task.start_date = params[:start_date]
+  #   @today = Date.today
+  #   @active_task =
+  # end
+
+
   def show
     @task = Task.find(params[:id])
   end
