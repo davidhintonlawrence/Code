@@ -4,37 +4,41 @@
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Category #<%= @category.id %></h3>
+        <h3 class="panel-title">Category: <b><%= @category.name %></b></h3>
       </div>
       <div class="panel-body">
         <div class="row">
           <div class="col-md-12">
             <dl class="dl-horizontal">
-              <dt>Task</dt>
-              <dd><%= @category.task_id %></dd>
-
-              <dt>Name</dt>
-              <dd><%= @category.name %></dd>
-
+              <!-- Show all tasks for a category -->
+              <ul class="list-group"><i><b>Tasks</b></i>
+              <% @category.tasks.each do |task| %>
+                <li>
+                  <%= task.description %>
+                </li>
+                <% end %>
+              </ul>
             </dl>
-            <div class="btn-group btn-group-justified">
-              <a href="/categories" class="btn btn-primary">
-                <i class="fa fa-chevron-left"></i>
-              </a>
 
-              <a href="/categories/<%= @category.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
+          </dl>
+          <div class="btn-group btn-group-justified">
+            <a href="/categories" class="btn btn-primary">
+              <i class="fa fa-chevron-left"></i>
+            </a>
 
-              <a href="/delete_category/<%= @category.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            </div>
+            <a href="/categories/<%= @category.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+
+            <a href="/delete_category/<%= @category.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <!-- End responsive panel example -->
