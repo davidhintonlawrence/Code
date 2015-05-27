@@ -23,9 +23,13 @@ Rails.application.routes.draw do
 
   # READ
   get "/tasks", :controller => "tasks", :action => "index"
+
+# Form action for setting the start date
+  get "/tasks/:set_date", :controller => "tasks", :action => "set_date_form"
+
   get "/tasks/:id", :controller => "tasks", :action => "show"
 # Add view below to see all tasks in one window with table, sorted by date and completion status
-  get "/tasksview", :controller => "tasks", :action => "all"
+get "/tasksview", :controller => "tasks", :action => "all"
 
 
   # UPDATE

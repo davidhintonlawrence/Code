@@ -22,16 +22,16 @@
   <h1> Plan for (feed in 5-day date range) </h1>
 </div>
 
-<!-- Label and input for range_start -->
-<form action="/tasks" method="post" class="form-horizontal">
+<!-- Label and input for set_date -->
+<form action="/tasks/:set_date" class="form-horizontal">
 
 <div class="form-group">
-      <label for="range_start" class="col-sm-2 control-label">
+      <label for="set_date" class="col-sm-2 control-label">
         View start date
       </label>
       <div class="col-sm-2">
         <div class="input-group date datetimepicker">
-          <input type="text" id="range_start" name="range_start" placeholder="Start date" class="form-control" value="range_start">
+          <input type="text" id="set_date" name="set_date" placeholder="Start date" class="form-control" value="set_date">
           <span class="input-group-addon">
             <i class="fa fa-calendar"></i>
           </span>
