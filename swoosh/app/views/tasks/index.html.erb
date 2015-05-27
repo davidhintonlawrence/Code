@@ -97,7 +97,7 @@
 
     <div class="col-md-2">
       <dl>
-        <% @tasks.where("start_date <= ?",Date.today).each do |task| %>
+        <% @tasks.where("start_date <= ?",Date.today).where(:complete => nil).each do |task| %>
 
         <dt><i><%= task.description %></i></dt>
 
@@ -112,7 +112,7 @@
 
     <div class="col-md-2">
      <dl>
-      <% @tasks.where(:start_date => Date.today+1).each do |task| %>
+      <% @tasks.where(:start_date => Date.today+1).where(:complete => nil).each do |task| %>
 
       <dt><i><%= task.description %></i></dt>
 
@@ -127,7 +127,7 @@
 
   <div class="col-md-2">
    <dl>
-    <% @tasks.where(:start_date => Date.today+2).each do |task| %>
+    <% @tasks.where(:start_date => Date.today+2).where(:complete => nil).each do |task| %>
 
     <dt><i><%= task.description %></i></dt>
 
@@ -142,7 +142,7 @@
 
 <div class="col-md-2">
  <dl>
-  <% @tasks.where(:start_date => Date.today+3).each do |task| %>
+  <% @tasks.where(:start_date => Date.today+3).where(:complete => nil).each do |task| %>
 
   <dt><i><%= task.description %></i></dt>
 
@@ -157,7 +157,7 @@
 
 <div class="col-md-2">
  <dl>
-  <% @tasks.where(:start_date => Date.today+4).each do |task| %>
+  <% @tasks.where(:start_date => Date.today+4).where(:complete => nil).each do |task| %>
 
   <dt><i><%= task.description %></i></dt>
 
