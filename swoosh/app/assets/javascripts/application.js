@@ -19,5 +19,7 @@
 //= require bootstrap-datetimepicker
 
 $(function () {
-  $('.datetimepicker').datetimepicker();
+  $('.datetimepicker').datetimepicker({
+    format: 'YYYY-MM-DD'
+  });
 });
