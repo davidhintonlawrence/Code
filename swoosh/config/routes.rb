@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   # Routes for the Category resource:
   # CREATE
   get "/categories/new", :controller => "categories", :action => "new"
@@ -25,9 +26,9 @@ Rails.application.routes.draw do
   get "/tasks", :controller => "tasks", :action => "index"
 
 # Form action for setting the start date
-  get "/tasks/:set_date", :controller => "tasks", :action => "set_date_form"
+get "/tasks/:set_date", :controller => "tasks", :action => "set_date_form"
 
-  get "/tasks/:id", :controller => "tasks", :action => "show"
+get "/tasks/:id", :controller => "tasks", :action => "show"
 # Add view below to see all tasks in one window with table, sorted by date and completion status
 get "/tasksview", :controller => "tasks", :action => "all"
 
@@ -38,6 +39,11 @@ get "/tasksview", :controller => "tasks", :action => "all"
 
   # DELETE
   get "/delete_task/:id", :controller => "tasks", :action => "destroy"
+
+  # Devise
+
+  root 'tasks#index'
+
   #------------------------------
 
   # The priority is based upon order of creation: first created -> highest priority.

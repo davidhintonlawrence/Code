@@ -15,18 +15,18 @@
 <div class="row">
   <hr>
 
-<div class="row">
-  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Edit Task #<%= @task.id %></h3>
-      </div>
-      <div class="panel-body">
-        <form action="/update_task/<%= @task.id %>" method="post" class="form-horizontal">
-          <!-- Hidden input for authenticity token to protect from forgery -->
-          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Edit Task #<%= @task.id %></h3>
+        </div>
+        <div class="panel-body">
+          <form action="/update_task/<%= @task.id %>" method="post" class="form-horizontal">
+            <!-- Hidden input for authenticity token to protect from forgery -->
+            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-          <!-- Label and input for status -->
+            <!-- Label and input for status -->
        <!--    <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
               <div class="checkbox">
@@ -117,7 +117,8 @@
               Update Task
             </button>
             or
-            <a href="/tasks/<%= @task.id %>">Cancel</a>
+            <a href="/tasks/">Cancel</a>
+
           </div>
         </div>
       </form>

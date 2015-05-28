@@ -7,6 +7,8 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
 # Weather API
 gem 'forecast_io'
 
+# Devise
+gem 'devise'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
