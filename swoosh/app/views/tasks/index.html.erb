@@ -23,7 +23,7 @@
 </div>
 
 <!-- Label and input for set_date -->
-<form action="/tasks/:set_date" class="form-horizontal">
+<!-- <form action="/tasks/:set_date" class="form-horizontal">
 
   <div class="form-group">
     <label for="set_date" class="col-sm-2 control-label">
@@ -46,7 +46,7 @@
       </button>
     </div>
   </div>
-</form>
+</form> -->
 
 </div>
 
@@ -63,24 +63,24 @@
     </div>
 
     <div class="col-md-2">
-      <dt><%= Date.today %></dt>
+      <dt><h4><b><%= Date.today %></b></h4></dt>
 
     </div>
 
     <div class="col-md-2">
-      <dt><%= Date.today+1 %></dt>
+      <dt><h4><b><%= Date.today+1 %></b></h4></dt>
     </div>
 
     <div class="col-md-2">
-      <dt><%= Date.today+2 %></dt>
+      <dt><h4><b><%= Date.today+2 %></b></h4></dt>
     </div>
 
     <div class="col-md-2">
-      <dt><%= Date.today+3 %></dt>
+      <dt><h4><b><%= Date.today+3 %></b></h4></dt>
     </div>
 
     <div class="col-md-2">
-      <dt><%= Date.today+4 %></dt>
+      <dt><h4><b><%= Date.today+4 %></b></h4></dt>
     </div>
 
   </div>
@@ -189,11 +189,11 @@
 
 <div class="row">
   <div class="col-md-2">
-    <dt><h4><%= @current_summary %></h4></dt>
+    <dt><h4>Weather</h4></dt>
   </div>
 
   <div class="col-md-2">
-    <dt>Weather forecast</dt>
+    <dt>Feed:<%= @current_summary %></dt>
 
   </div>
 
@@ -220,12 +220,12 @@
 <hr>
 
 <!-- Toggle to next set of days / week -->
-<ul class="pager">
+<!-- <ul class="pager">
   <li class="previous disabled"><a href="#">← Older</a></li>
   <li class="next"><a href="#">Newer →</a></li>
 </ul>
 
-<hr>
+<hr> -->
 
 <!-- Responsive, Isotope-based layout example -->
 
