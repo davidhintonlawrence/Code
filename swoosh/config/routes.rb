@@ -26,11 +26,13 @@ Rails.application.routes.draw do
   get "/tasks", :controller => "tasks", :action => "index"
 
 # Form action for setting the start date
-get "/tasks/:set_date", :controller => "tasks", :action => "set_date_form"
+# get "/tasks/:set_date", :controller => "tasks", :action => "set_date_form"
 
 get "/tasks/:id", :controller => "tasks", :action => "show"
 # Add view below to see all tasks in one window with table, sorted by date and completion status
 get "/tasksview", :controller => "tasks", :action => "all"
+get "/home", :controller => "tasks", :action => "home"
+
 
 
   # UPDATE
@@ -42,7 +44,7 @@ get "/tasksview", :controller => "tasks", :action => "all"
 
   # Devise
 
-  root 'tasks#index'
+  root 'tasks#home'
 
   #------------------------------
 

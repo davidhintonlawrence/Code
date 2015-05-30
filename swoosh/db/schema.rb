@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150528012814) do
+ActiveRecord::Schema.define(version: 20150530011015) do
 
   create_table "categories", force: :cascade do |t|
     t.integer  "task_id"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "tasks", force: :cascade do |t|

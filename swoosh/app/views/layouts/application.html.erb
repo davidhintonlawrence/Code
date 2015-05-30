@@ -56,7 +56,7 @@
             </ul>
           </li>
         </ul>
-
+<!--
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Profile Actions<span class="caret"></span></a>
@@ -64,7 +64,7 @@
              <li><a href="/users/sign_in">Sign in</a></li>
              <li><a href="/users/sign_out" data-method="delete" rel="nofollow">Sign out</a></li>
              <li><a href="/users/edit">Edit profile</a></li>
-             <li><a href="/users/sign_up">Sign up</a></li>
+             <li><a href="/users/sign_up">Sign up</a></li> -->
 
               <!-- <%# if 1 < 2 %>
               <li><a href="/users/edit">Edit profile</a></li>
@@ -73,9 +73,42 @@
               <li><a href="/users/sign_in">Sign in</a></li>
               <li><a href="/users/sign_up">Sign up</a></li>
               <%# end %> -->
-            </ul>
+          <!--   </ul>
           </li>
+        </ul> -->
+
+        <!-- New Sign up -->
+        <ul class = "nav navbar-nav navbar-right">
+          <% if current_user == nil %>
+          <li>
+            <a href='/users/sign_up'>
+              Sign up
+            </a>
+          </li>
+
+          <!-- Sign in -->
+          <li>
+            <a href='/users/sign_in'>
+              Sign in
+            </a>
+          </li>
+          <% else %>
+
+          <!-- Sign out -->
+          <li>
+            <a href='/users/sign_out' data-method = 'delete'>
+              Sign out
+            </a>
+          </li>
+          <!-- Edit -->
+          <li>
+            <a href='/users/edit'>
+            <%= current_user.email %>
+            </a>
+          </li>
+          <% end %>
         </ul>
+
       </div><!-- /.navbar-collapse -->
     </div>
   </nav>

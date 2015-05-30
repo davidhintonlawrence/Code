@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   def index
-    @categories = Category.all
+    # @categories = Category.all
+    @categories = current_user.categories
   end
 
   def show
@@ -15,6 +16,7 @@ class CategoriesController < ApplicationController
     @category = Category.new
     @category.task_id = params[:task_id]
     @category.name = params[:name]
+    @category.user_id = current_user.id
 
     if @category.save
       redirect_to "/categories", :notice => "Category created successfully."

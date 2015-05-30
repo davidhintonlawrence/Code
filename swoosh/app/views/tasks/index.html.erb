@@ -19,7 +19,7 @@
 -->
 
 <div class="row">
-  <h1> <b>Plan for:</b> <h2><%= Date.today %> to <%= Date.today+4 %></h2> </h1>
+  <h1> <b>Plan for the next 5 days:</b> </h1>
 </div>
 
 <!-- Label and input for set_date -->
@@ -59,28 +59,27 @@
 
   <div class="row">
     <div class="col-md-2">
-      <dt><h4>Date</h4></dt>
     </div>
 
     <div class="col-md-2">
-      <dt><h4><b><%= Date.today %></b></h4></dt>
+      <dt><h4><b><%= Date.today.strftime("%A, %m-%d")%></b></h4></dt>
 
     </div>
 
     <div class="col-md-2">
-      <dt><h4><b><%= Date.today+1 %></b></h4></dt>
+      <dt><h4><b><%= (Date.today+1).strftime("%A, %m-%d") %></b></h4></dt>
     </div>
 
     <div class="col-md-2">
-      <dt><h4><b><%= Date.today+2 %></b></h4></dt>
+      <dt><h4><b><%= (Date.today+2).strftime("%A, %m-%d") %></b></h4></dt>
     </div>
 
     <div class="col-md-2">
-      <dt><h4><b><%= Date.today+3 %></b></h4></dt>
+      <dt><h4><b><%= (Date.today+3).strftime("%A, %m-%d") %></b></h4></dt>
     </div>
 
     <div class="col-md-2">
-      <dt><h4><b><%= Date.today+4 %></b></h4></dt>
+      <dt><h4><b><%= (Date.today+4).strftime("%A, %m-%d") %></b></h4></dt>
     </div>
 
   </div>
@@ -92,7 +91,7 @@
 
   <div class="row">
     <div class="col-md-2">
-      <dt><h4>Tasks</h4></dt>
+      <dt><h3>Your upcoming tasks</h3></dt>
     </div>
 
     <div class="col-md-2">
@@ -189,28 +188,42 @@
 
 <div class="row">
   <div class="col-md-2">
-    <dt><h4>Weather</h4></dt>
+    <dt><h3>Chicago Weather Forecast</h3></dt>
   </div>
 
   <div class="col-md-2">
-    <dt>Feed:<%= @current_summary %></dt>
-
+    <%= @day_forecasts[0]["summary"] %>
+    <ul>Max temp: <%= @day_forecasts[0]["temperatureMax"].to_i %></ul>
+    <ul>Min temp: <%= @day_forecasts[0]["temperatureMin"].to_i %></ul>
+    <ul>Chance of rain: <%= @day_forecasts[0]["precipProbability"].to_f*100%>%</ul>
   </div>
 
   <div class="col-md-2">
-    <dt>Weather forecast</dt>
+    <%= @day_forecasts[1]["summary"] %>
+    <ul>Max temp: <%= @day_forecasts[1]["temperatureMax"].to_i %></ul>
+    <ul>Min temp: <%= @day_forecasts[1]["temperatureMin"].to_i %></ul>
+    <ul>Chance of rain: <%= @day_forecasts[1]["precipProbability"].to_f*100%>%</ul>
   </div>
 
   <div class="col-md-2">
-    <dt>Weather forecast</dt>
+    <%= @day_forecasts[2]["summary"] %>
+    <ul>Max temp: <%= @day_forecasts[2]["temperatureMax"].to_i %></ul>
+    <ul>Min temp: <%= @day_forecasts[2]["temperatureMin"].to_i %></ul>
+    <ul>Chance of rain: <%= @day_forecasts[2]["precipProbability"].to_f*100%>%</ul>
   </div>
 
   <div class="col-md-2">
-    <dt>Weather forecast</dt>
+    <%= @day_forecasts[3]["summary"] %>
+    <ul>Max temp: <%= @day_forecasts[3]["temperatureMax"].to_i %></ul>
+    <ul>Min temp: <%= @day_forecasts[3]["temperatureMin"].to_i %></ul>
+    <ul>Chance of rain: <%= @day_forecasts[3]["precipProbability"].to_f*100%>%</ul>
   </div>
 
   <div class="col-md-2">
-    <dt>Weather forecast</dt>
+    <%= @day_forecasts[4]["summary"]%>
+    <ul>Max temp: <%= @day_forecasts[4]["temperatureMax"].to_i %></ul>
+    <ul>Min temp: <%= @day_forecasts[4]["temperatureMin"].to_i %></ul>
+    <ul>Chance of rain: <%= @day_forecasts[4]["precipProbability"].to_f*100%>%</ul>
   </div>
 
 </div>
@@ -272,7 +285,7 @@
 </div>
 <% end %>
 </div>
- -->
+-->
 <!-- You can ignore the following. It's a quick and dirty example of how to get a Pinterest-style layout with quick search. -->
 <!-- JavaScript for Isotope layout and quicksearch -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.pkgd.min.js"></script>

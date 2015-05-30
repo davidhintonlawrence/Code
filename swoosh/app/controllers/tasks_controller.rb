@@ -2,14 +2,39 @@
 require 'open-uri'
 
 class TasksController < ApplicationController
+
+
+  before_action :ensure_current_user_is_owner, :only => [:show, :edit, :update, :destroy]
+  # drop only if relevant for all parts
+
+  def ensure_current_user_is_owner
+
+    @tasks = Task.find(params[:id])
+
+    if @tasks.user_id != current_user.id
+      redurect_to root_url, :alert => "You are not authorized for that."
+    end
+
+  end
+
+  def home
+
+  end
+
   def index
-    @tasks = Task.all
+    @tasks = current_user.tasks
+
+    city_to_weather
+    # @tasks = Task.where({:user_id => current_user.id})
+    # @tasks = Task.all
     # @tasks = Task.where(:start_date => Date.today..Date.today)
 
   end
 
   def all
-    @tasks = Task.all
+    @tasks = current_user.tasks
+    # @tasks = Task.where({:user_id => current_user.id})
+    # @tasks = Task.all
   end
 
 # for intelligent task filling
@@ -36,7 +61,8 @@ class TasksController < ApplicationController
     @task.complete = params[:complete]
     @task.category_id = params[:category_id]
     @task.due_on = params[:due_on]
-    @task.user_id = params[:user_id]
+    # @task.user_id = params[:user_id]
+    @task.user_id = current_user.id
     @task.description = params[:description]
 
     if @task.save
@@ -105,7 +131,7 @@ class TasksController < ApplicationController
 
     parsed_data = JSON.parse(open(darksky_url+location_url).read)
 
-    @current_summary = parsed_data["currently"]["summary"]
+    @day_forecasts = parsed_data["daily"]["data"]
 
     # Future days
 
@@ -115,8 +141,7 @@ class TasksController < ApplicationController
 
     # @future_summary = parsed_data_time["daily"]["summary"]
 
-    # render to 'index.html.erb' of to '/tasks'
-    render("/tasks")
+    # render to 'index.html.erb' or to '/tasks'?
 
   end
 
