@@ -12,7 +12,7 @@ class TasksController < ApplicationController
     @tasks = Task.find(params[:id])
 
     if @tasks.user_id != current_user.id
-      redurect_to root_url, :alert => "You are not authorized for that."
+      redirect_to root_url, :alert => "You are not authorized for that."
     end
 
   end
@@ -33,17 +33,9 @@ class TasksController < ApplicationController
 
   def all
     @tasks = current_user.tasks
-    # @tasks = Task.where({:user_id => current_user.id})
+
     # @tasks = Task.all
   end
-
-# for intelligent task filling
-  # def active_task
-  #   @task.start_date = params[:start_date]
-  #   @today = Date.today
-  #   @active_task =
-  # end
-
 
   def show
     @task = Task.find(params[:id])
@@ -85,7 +77,8 @@ class TasksController < ApplicationController
     @task.complete = params[:complete]
     @task.category_id = params[:category_id]
     @task.due_on = params[:due_on]
-    @task.user_id = params[:user_id]
+    @task.user_id = current_user.id
+
     @task.description = params[:description]
 
     if @task.save
@@ -100,7 +93,7 @@ class TasksController < ApplicationController
 
     @task.destroy
 
-    redirect_to "/tasks", :notice => "Task deleted."
+    redirect_to "/tasksview", :notice => "Task deleted."
   end
 
   # Show today's date

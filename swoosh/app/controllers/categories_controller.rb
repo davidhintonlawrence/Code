@@ -31,9 +31,9 @@ class CategoriesController < ApplicationController
 
   def update
     @category = Category.find(params[:id])
-
     @category.task_id = params[:task_id]
     @category.name = params[:name]
+    @category.user_id = current_user.id
 
     if @category.save
       redirect_to "/categories", :notice => "Category updated successfully."

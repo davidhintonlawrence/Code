@@ -59,35 +59,35 @@
           </div>
 
 
-            <!-- Label and input for start_date -->
-            <div class="form-group">
-              <label for="start_date" class="col-sm-2 control-label">
-                Start date
-              </label>
-              <div class="col-sm-10">
-                <div class="input-group date datetimepicker">
-                  <input type="text" id="start_date" name="start_date" placeholder="Start date" class="form-control" value="<%= @task.start_date %>">
-                  <span class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </span>
-                </div>
+          <!-- Label and input for start_date -->
+          <div class="form-group">
+            <label for="start_date" class="col-sm-2 control-label">
+              Start date
+            </label>
+            <div class="col-sm-10">
+              <div class="input-group date datetimepicker">
+                <input type="text" id="start_date" name="start_date" placeholder="Start date" class="form-control" value="<%= @task.start_date %>">
+                <span class="input-group-addon">
+                  <i class="fa fa-calendar"></i>
+                </span>
               </div>
             </div>
+          </div>
 
-            <!-- Label and input for due_on -->
-            <div class="form-group">
-              <label for="due_on" class="col-sm-2 control-label">
-                Due on
-              </label>
-              <div class="col-sm-10">
-                <div class="input-group date datetimepicker">
-                  <input type="text" id="due_on" name="due_on" placeholder="Due on" class="form-control" value="<%= @task.due_on %>">
-                  <span class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </span>
-                </div>
+          <!-- Label and input for due_on -->
+          <div class="form-group">
+            <label for="due_on" class="col-sm-2 control-label">
+              Due on
+            </label>
+            <div class="col-sm-10">
+              <div class="input-group date datetimepicker">
+                <input type="text" id="due_on" name="due_on" placeholder="Due on" class="form-control" value="<%= @task.due_on %>">
+                <span class="input-group-addon">
+                  <i class="fa fa-calendar"></i>
+                </span>
               </div>
             </div>
+          </div>
 
 
           <!-- Label and input for complete -->
@@ -128,6 +128,9 @@
             <button class="btn btn-warning">
               Update Task
             </button>
+
+            or
+            <a href="/delete_task/<%= @task.id %>" class="btn btn-danger btn-md" rel="nofollow">Delete</a>
             or
             <a href="/tasks/">Cancel</a>
 
