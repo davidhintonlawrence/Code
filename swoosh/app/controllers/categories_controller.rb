@@ -1,4 +1,17 @@
 class CategoriesController < ApplicationController
+
+  before_action :ensure_current_user_is_owner, :only => [:show, :edit, :update, :destroy]
+
+  def ensure_current_user_is_owner
+
+    @categories = Category.find(params[:id])
+
+    if @categories.user_id != current_user.id
+      redirect_to root_url, :alert => "You are not authorized for that."
+    end
+
+  end
+
   def index
     # @categories = Category.all
     @categories = current_user.categories

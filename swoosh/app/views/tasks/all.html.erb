@@ -20,42 +20,39 @@
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title"><b><%= task.description %></b></h3>
-      </div>
-      <div class="panel-body">
-        <dl>
+        <h3 class="panel-title"><b><%= task.description %></b>
+          <% if task.complete == nil %>
+          <% else %> <i>(completed)</i>
+          <% end %></h3>
+        </div>
+        <div class="panel-body">
+          <dl>
+            <dd><b>Start date:</b> <%= task.start_date %></dd>
 
-          <dd><b>Complete? </b> <%= task.complete %></dd>
+            <dd><b>Due on:</b> <%= task.due_on %></dd>
+          </dl>
+          <div class="btn-group btn-group-justified">
 
-          <dd><b>Start date:</b> <%= task.start_date %></dd>
+            <a href="/tasks/<%= task.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
 
-          <dd><b>Due on:</b> <%= task.due_on %></dd>
-
-
-
-      </dl>
-      <div class="btn-group btn-group-justified">
-
-        <a href="/tasks/<%= task.id %>/edit" class="btn btn-warning">
-          <i class="fa fa-edit"></i>
-        </a>
-
-        <a href="/delete_task/<%= task.id %>" class="btn btn-danger" rel="nofollow">
-          <i class="fa fa-trash-o"></i>
-        </a>
+            <a href="/delete_task/<%= task.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
+    <% end %>
   </div>
-</div>
-<% end %>
-</div>
 
-<!-- You can ignore the following. It's a quick and dirty example of how to get a Pinterest-style layout with quick search. -->
-<!-- JavaScript for Isotope layout and quicksearch -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.pkgd.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.0.0/isotope.pkgd.min.js"></script>
-<script>
-  $(function() {
+  <!-- You can ignore the following. It's a quick and dirty example of how to get a Pinterest-style layout with quick search. -->
+  <!-- JavaScript for Isotope layout and quicksearch -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.pkgd.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.0.0/isotope.pkgd.min.js"></script>
+  <script>
+    $(function() {
     // quick search regex
     var qsRegex;
 

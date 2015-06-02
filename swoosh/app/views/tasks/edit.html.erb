@@ -108,8 +108,8 @@
               Category
             </label>
             <div class="col-sm-10">
-             <!--  <input type="text" id="category_id" name="category_id" placeholder="Category" class="form-control" value="<%= @task.category %>"> -->
-             <%= select_tag(:category_id, options_from_collection_for_select(Category.all, :id, :name, @task.category_id), :class => "form-control") %>
+
+             <%= select_tag(:category_id, options_from_collection_for_select(current_user.categories, :id, :name, @task.category_id), :class => "form-control") %>
            </div>
          </div>
 

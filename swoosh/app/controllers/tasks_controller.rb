@@ -18,23 +18,16 @@ class TasksController < ApplicationController
   end
 
   def home
-
   end
 
   def index
     @tasks = current_user.tasks
-
+  # Call weather forecast action defined below
     city_to_weather
-    # @tasks = Task.where({:user_id => current_user.id})
-    # @tasks = Task.all
-    # @tasks = Task.where(:start_date => Date.today..Date.today)
-
   end
 
   def all
     @tasks = current_user.tasks
-
-    # @tasks = Task.all
   end
 
   def show
