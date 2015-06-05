@@ -13,7 +13,6 @@ class CategoriesController < ApplicationController
   end
 
   def index
-    # @categories = Category.all
     @categories = current_user.categories
   end
 

@@ -46,7 +46,6 @@ class TasksController < ApplicationController
     @task.complete = params[:complete]
     @task.category_id = params[:category_id]
     @task.due_on = params[:due_on]
-    # @task.user_id = params[:user_id]
     @task.user_id = current_user.id
     @task.description = params[:description]
 
@@ -97,7 +96,6 @@ class TasksController < ApplicationController
   #Weather API for a given location
 
   def city_to_weather
-
     # City
     # @city = params[:user_city]
     # url_safe_city = URI.encode(@city)
@@ -118,35 +116,6 @@ class TasksController < ApplicationController
     parsed_data = JSON.parse(open(darksky_url+location_url).read)
 
     @day_forecasts = parsed_data["daily"]["data"]
-
-    # Future days
-
-    # https://api.forecast.io/forecast/APIKEY/LATITUDE,LONGITUDE,TIME
-    # locationtime_url = @lat.to_s+','+@lng.to_s+','+(Date.today+1).to_s
-    # parsed_data_time = JSON.parse(open(darksky_url+locationtime_url).read)
-
-    # @future_summary = parsed_data_time["daily"]["summary"]
-
-    # render to 'index.html.erb' or to '/tasks'?
-
   end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 end

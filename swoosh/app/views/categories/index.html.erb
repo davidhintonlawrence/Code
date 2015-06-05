@@ -26,18 +26,32 @@
         <dl>
 
           <!-- Show all tasks for a category -->
-          <ul class="list-group"><i><b>Tasks</b></i>
+
+          <ul class="list-group"><i><b>Tasks Outstanding</b></i>
             <% category.tasks.each do |task| %>
             <dd>
-              <%= task.description %>
 
               <% if task.complete == nil %>
-              <% else %> <i>(completed)</i>
+              <%= task.description %>
+              <% else %>
               <% end %>
 
             </dd>
             <% end %>
           </ul>
+
+          <ul class="list-group"><i><b>Completed</b></i>
+            <% category.tasks.each do |task| %>
+            <dd>
+
+              <% if task.complete == nil %>
+              <% else %> <%= task.description %>
+              <% end %>
+
+            </dd>
+            <% end %>
+          </ul>
+
         </dl>
 
         <div class="btn-group btn-group-justified">
